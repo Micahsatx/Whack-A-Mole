@@ -1,6 +1,6 @@
 (function(){
 "use strict"
-// global value that is set equal to random button in the newRandomButton
+// global value that is set equal to random button in the newRandomTube
 // newRandomButton returns a value for randomTubeChosen
 var randomTubeChosen;
 // setting initial value's for values used.
@@ -12,6 +12,8 @@ var flower = $(".flower");
 // used in the 2 timer functions.  start button / countDown
 var flowerInterval;
 var intervalTime = 1500;
+var intervalTimeHard = 900;
+var intervalTimeEasy = 2500;
 
     function playTubeSound() {
         $("#tubeSound")[0].play();
@@ -28,7 +30,7 @@ var intervalTime = 1500;
     }
     
     // randomizer function
-    function newRandomButton(){
+    function newRandomTube(){
         var $keys = $('.flower');
         var randomTubeChosen = $keys[Math.floor(Math.random()*$keys.length)];
         // declare the randomTubeChosen so it can be used in the click listener
@@ -82,15 +84,39 @@ var intervalTime = 1500;
     // runs countDown function
     // then the interval uses randomTubeChosen(the random button/hole)
     // puts the random button/hole into animateFlower that animates a specific random button
-    $("#idOfStart").click(function(){
+    $("#idOfStartNormalMode").click(function(){
         countDown();
-        
         // interval that selects a tube at a set interval.  animates flower using that
         flowerInterval = setInterval(function() {
-            randomTubeChosen = newRandomButton();
-            animateFlower(randomTubeChosen); // function that....
+            randomTubeChosen = newRandomTube();
+
+            animateFlower(randomTubeChosen);
         }, intervalTime);
     });
+
+    $("#idOfStartHardMode").click(function(){
+        countDown();
+        // interval that selects a tube at a set interval.  animates flower using that
+        flowerInterval = setInterval(function() {
+            // gives randomTubeChosen a value
+            randomTubeChosen = newRandomTube();
+            // animates the flower within the randomTubeChosen
+            animateFlower(randomTubeChosen);
+        }, intervalTimeHard);
+    });
+
+    $("#idOfStartEasyMode").click(function(){
+        countDown();
+        // interval that selects a tube at a set interval.  animates flower using that
+        flowerInterval = setInterval(function() {
+            // gives randomTubeChosen a value
+            randomTubeChosen = newRandomTube();
+            // animates the flower within the randomTubeChosen
+            animateFlower(randomTubeChosen);
+        }, intervalTimeEasy);
+    });
+
+
 
 
 }());
