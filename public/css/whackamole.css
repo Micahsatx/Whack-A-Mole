@@ -1,10 +1,59 @@
 .individualBox {
     height: 150px;
     width: 150px;
-   /* background-image: url("/img/mario-tube.png");
-    background-repeat: no-repeat;*/
+    cursor: url('/img/hammer.png'), default;
     background-position: center;
     background-position: bottom;
+    z-index: -1;
+    margin: -30px;
+    outline: none;
+    border: none;
+}
+
+body {
+    cursor: url('/img/hammer.png'), default;
+    background-image: url("/img/mario-background.jpg");
+    font-family: 'Audiowide', cursive;
+    font-weight: ;
+}
+
+.tube {
+    position: absolute;
+    top: 32px;
+    right: 100px;
+    z-index: 1;
+}
+
+
+button.individualBox {
+    background-image:url('/img/brick.png');
+
+}
+
+#idOfStart {
+    background-image: url("img/rock.png");
+    width: 150px;
+    margin-left: -115px;
+    margin-top: -50px;
+}
+
+.flower {
+    position: relative;
+    bottom: 65px;
+    left: -20px;
+    z-index: 0;
+
+}
+.title{
+    margin-left: 150px;
+}
+.topFields {
+    margin-bottom: 50px;
+    margin-left: 150px;
+}
+
+.rowBox {
+    position: relative;
 }
 
 .topRow {
