@@ -1,3 +1,36 @@
+/*background accross page & fonts*/
+body {
+    cursor: url('/img/hammer.png'), default;
+    background-image: url("/img/mario-background.jpg");
+    font-family: 'Audiowide', cursive;
+}
+
+/*bottom row of 3 buttons*/
+.bottomRow {
+    float: left;
+}
+
+/*picture of flower positioned within button*/
+.flower {
+    position: relative;
+    bottom: 65px;
+    left: -20px;
+    z-index: 0;
+}
+
+/*easy/medium/hard positioning characteristics*/
+.gamePlayMode{
+    float: left;
+    margin-left: 75px;
+    margin-bottom: 100px;
+}
+
+/*gamePlayMode child button.  used for positioning of each of the 3 */
+.gamePlayMode>.button {
+    float:left;
+}
+
+/*properties of each individual tube/flower box*/
 .individualBox {
     height: 150px;
     width: 150px;
@@ -10,26 +43,33 @@
     border: none;
 }
 
-body {
-    cursor: url('/img/hammer.png'), default;
-    background-image: url("/img/mario-background.jpg");
-    font-family: 'Audiowide', cursive;
-
-}
-
-
-
-.gamePlayMode{
+/*middle row of 3 buttons*/
+.middleRow {
     float: left;
-    margin-left: 75px;
-    margin-bottom: 100px;
 }
 
-.gamePlayMode>.button {
-    float:left;
+/*all 3 rows.  all 9 buttons*/
+.rowBox {
+    position: relative;
 }
 
+/*page title at top of page*/
+.title{
+    margin-left: 150px;
+}
 
+/*score/timer/highscore positioning*/
+.topFields {
+    margin-bottom: 50px;
+    margin-left: 150px;
+}
+
+/*top row of 3 buttons*/
+.topRow {
+    float: left;
+}
+
+/*picture of tube.  positioned within button*/
 .tube {
     position: absolute;
     top: 32px;
@@ -37,70 +77,49 @@ body {
     z-index: 1;
 }
 
-button.individualBox {
-    background-image:url('/img/brick.png');
-
-}
-
-button#idOfStartNormalMode {
-    background-image:url('/img/startNormal.png');
-
-}
-button#idOfStartEasyMode {
-    background-image:url('/img/startEasy.png');
-
-}
-button#idOfStartHardMode {
-    background-image:url('/img/startHard.png');
-
-}
-
-#idOfStartNormalMode {
-    height: 83px;
-    width: 270px;
-    cursor: url('/img/hammer.png'), default;
-}
-
+/*size characteristics and cursor for each button*/
 #idOfStartEasyMode {
     height: 83px;
     width: 270px;
     cursor: url('/img/hammer.png'), default;
 }
 
+/*size characteristics and cursor for each button*/
 #idOfStartHardMode {
     height: 83px;
     width: 270px;
     cursor: url('/img/hammer.png'), default;
 }
-
-.flower {
-    position: relative;
-    bottom: 65px;
-    left: -20px;
-    z-index: 0;
-
-}
-.title{
-    margin-left: 150px;
-}
-.topFields {
-    margin-bottom: 50px;
-    margin-left: 150px;
-
+/*size characteristics and cursor for each button*/
+#idOfStartNormalMode {
+    height: 83px;
+    width: 270px;
+    cursor: url('/img/hammer.png'), default;
 }
 
-.rowBox {
-    position: relative;
+/*background brick image within each button*/
+button.individualBox {
+    background-image:url('/img/brick.png');
 }
 
-.topRow {
-    float: left;
+/*unique image for each mode*/
+button#idOfStartNormalMode {
+    background-image:url('/img/startNormal.png');
 }
 
-.middleRow {
-    float: left;
+/*unique image for each mode*/
+button#idOfStartEasyMode {
+    background-image:url('/img/startEasy.png');
 }
 
-.bottomRow {
-    float: left;
+/*unique image for each mode*/
+button#idOfStartHardMode {
+    background-image:url('/img/startHard.png');
 }
+
+
+
+
+
+
+
