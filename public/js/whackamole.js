@@ -15,27 +15,16 @@ var intervalTime = 1500;
 var intervalTimeHard = 900;
 var intervalTimeEasy = 2500;
 
-    function playTubeSound() {
-        $("#tubeSound")[0].play();
+    function startGame(interval){
+        countDown();
+        // interval that selects a tube at a set interval.  animates flower using that
+        flowerInterval = setInterval(function() {
+            // gives randomTubeChosen a value
+            randomTubeChosen = newRandomTube();
+            // animates the flower within the randomTubeChosen
+            animateFlower(randomTubeChosen);
+        }, interval);
     }
-
-    // function animates the flower.  note the interval is 1 seconds divided by 2.  shortens code.
-    // if -= was not included in the animate portion the flower wont return to original position
-    function animateFlower(button) {
-            $(button).animate({
-                'margin-top': '-=50px'
-            }, (intervalTime / 2)).delay(1000).animate({
-                'margin-top': '+=50px'
-            });
-    }
-    
-    // randomizer function
-    function newRandomTube(){
-        var $keys = $('.flower');
-        var randomTubeChosen = $keys[Math.floor(Math.random()*$keys.length)];
-        // declare the randomTubeChosen so it can be used in the click listener
-        return randomTubeChosen;
-    };
 
     // the countDown function.  starts at 30seconds then lowers the count by 1
     // at an interval or aprox. 1 second.
@@ -47,7 +36,7 @@ var intervalTimeEasy = 2500;
                 // running when the game ends
                 clearInterval(flowerInterval);
                 clearInterval(gameTimerInterval);
-                alert("Game Over!")
+                alert("Game Over!");
                 timer = 30;
                 score = 0;
             }
@@ -58,6 +47,25 @@ var intervalTimeEasy = 2500;
         }, 1000)
     }
 
+    // randomizer function
+    function newRandomTube(){
+        var $keys = $('.flower');
+        var randomTubeChosen = $keys[Math.floor(Math.random()*$keys.length)];
+        // declare the randomTubeChosen so it can be used in the click listener
+        return randomTubeChosen;
+    };
+    
+    // function animates the flower.  note the interval is 1 seconds divided by 2.  shortens code.
+    // if -= was not included in the animate portion the flower wont return to original position
+    function animateFlower(button) {
+            $(button).animate({
+                'margin-top': '-=50px'
+            },
+            (intervalTime / 2)).delay(1000).animate({
+                'margin-top': '+=50px'
+            });
+    }
+
     function scoreKeeper(){
         $("#score").html(score);
         // if the score is greater than the highscore then replace the previous highscore
@@ -66,6 +74,10 @@ var intervalTimeEasy = 2500;
             // what actually appends the html of the highscore.
             $("#highScore").html(highScore);
         }
+    }
+
+    function playTubeSound() {
+        $("#tubeSound")[0].play();
     }
 
     // flower click listener
@@ -79,40 +91,16 @@ var intervalTimeEasy = 2500;
         }
     });
     
-    // click listeners for difficult mode.  this starts the entire game process
+    $("#idOfStartEasyMode").click(function(){
+        startGame(intervalTimeEasy);
+    });
+
     $("#idOfStartNormalMode").click(function(){
-        countDown();
-        // interval that selects a tube at a set interval.  animates flower using that
-        flowerInterval = setInterval(function() {
-            randomTubeChosen = newRandomTube();
-            // animates the flower within the randomTubeChosen
-            animateFlower(randomTubeChosen);
-        // uses normal interval variable.  alters the frequency of flower animation   
-        }, intervalTime);
+        startGame(intervalTime);
     });
 
     $("#idOfStartHardMode").click(function(){
-        countDown();
-        // interval that selects a tube at a set interval.  animates flower using that
-        flowerInterval = setInterval(function() {
-            // gives randomTubeChosen a value
-            randomTubeChosen = newRandomTube();
-            // animates the flower within the randomTubeChosen
-            animateFlower(randomTubeChosen);
-        // uses hard interval variable.  alters the frequency of flower animation
-        }, intervalTimeHard);
-    });
-
-    $("#idOfStartEasyMode").click(function(){
-        countDown();
-        // interval that selects a tube at a set interval.  animates flower using that
-        flowerInterval = setInterval(function() {
-            // gives randomTubeChosen a value
-            randomTubeChosen = newRandomTube();
-            // animates the flower within the randomTubeChosen
-            animateFlower(randomTubeChosen);
-        // uses easy interval variable.  alters the frequency of flower animation
-        }, intervalTimeEasy);
+        startGame(intervalTimeHard);
     });
 
 }());
