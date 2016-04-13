@@ -17,6 +17,19 @@ body {
 
 }
 
+
+
+.gamePlayMode{
+    float: left;
+    margin-left: 75px;
+    margin-bottom: 100px;
+}
+
+.gamePlayMode>.button {
+    float:left;
+}
+
+
 .tube {
     position: absolute;
     top: 32px;
@@ -24,22 +37,39 @@ body {
     z-index: 1;
 }
 
-
 button.individualBox {
     background-image:url('/img/brick.png');
 
 }
 
-button#idOfStart {
-    background-image:url('/img/start.png');
+button#idOfStartNormalMode {
+    background-image:url('/img/startNormal.png');
+
+}
+button#idOfStartEasyMode {
+    background-image:url('/img/startEasy.png');
+
+}
+button#idOfStartHardMode {
+    background-image:url('/img/startHard.png');
 
 }
 
-#idOfStart {
+#idOfStartNormalMode {
     height: 83px;
     width: 270px;
-    margin-left: -175px;
-    margin-top: -50px;
+    cursor: url('/img/hammer.png'), default;
+}
+
+#idOfStartEasyMode {
+    height: 83px;
+    width: 270px;
+    cursor: url('/img/hammer.png'), default;
+}
+
+#idOfStartHardMode {
+    height: 83px;
+    width: 270px;
     cursor: url('/img/hammer.png'), default;
 }
 
