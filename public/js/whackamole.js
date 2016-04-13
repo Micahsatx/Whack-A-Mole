@@ -7,7 +7,7 @@ var randomTubeChosen;
 var score = 0;
 var highScore = 0;
 var timer = 30;
-// this variable is tied to the click listener that checks if it is correct 
+// this variable is tied to the click listener that checks if flower click was successful 
 var flower = $(".flower");
 // used in the 2 timer functions.  start button / countDown
 var flowerInterval;
@@ -78,19 +78,16 @@ var intervalTimeEasy = 2500;
             playTubeSound();
         }
     });
-
-
-    // this likely can be chopped into 2 function so that it is shorter.  start button
-    // runs countDown function
-    // then the interval uses randomTubeChosen(the random button/hole)
-    // puts the random button/hole into animateFlower that animates a specific random button
+    
+    // click listeners for difficult mode.  this starts the entire game process
     $("#idOfStartNormalMode").click(function(){
         countDown();
         // interval that selects a tube at a set interval.  animates flower using that
         flowerInterval = setInterval(function() {
             randomTubeChosen = newRandomTube();
-
+            // animates the flower within the randomTubeChosen
             animateFlower(randomTubeChosen);
+        // uses normal interval variable.  alters the frequency of flower animation   
         }, intervalTime);
     });
 
@@ -102,6 +99,7 @@ var intervalTimeEasy = 2500;
             randomTubeChosen = newRandomTube();
             // animates the flower within the randomTubeChosen
             animateFlower(randomTubeChosen);
+        // uses hard interval variable.  alters the frequency of flower animation
         }, intervalTimeHard);
     });
 
@@ -113,10 +111,8 @@ var intervalTimeEasy = 2500;
             randomTubeChosen = newRandomTube();
             // animates the flower within the randomTubeChosen
             animateFlower(randomTubeChosen);
+        // uses easy interval variable.  alters the frequency of flower animation
         }, intervalTimeEasy);
     });
-
-
-
 
 }());
