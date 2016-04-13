@@ -10,11 +10,21 @@ var timer = 30;
 // this variable is tied to the click listener that checks if it is correct 
 // can this variable box be cut out in someway to shorten/clean up code
 var box = $(".flower");
+// used in the 2 timer functions.  start button / countDown
 var moleInt;
 var intervalTime = 1500;
 
 
-// function that chooses a random button and assigns it to buttonChosen
+    function moleInSingleButton(button) {
+            $(button).animate({
+                'margin-top': '-=50px'
+            }, (intervalTime / 2)).delay(1000).animate({
+                'margin-top': '+=50px'
+            });
+            console.log($(button));
+    }
+    
+    // function that chooses a random button and assigns it to buttonChosen
     function newRandomButton(){
         // find a random button
         var $keys = $('.flower');
@@ -22,6 +32,21 @@ var intervalTime = 1500;
         // set the value for button chosen so it can be used if start button is used.
         return buttonChosen;
     };
+
+    // the countDown function.  starts at 30seconds then lowers the count by 1
+    // at an interval or aprox. 1 second.
+    function countDown(){
+        var timeInt = setInterval(function(){
+            timer--;
+            $("#timer").html(timer);
+            if(timer == 0){
+                clearInterval(moleInt);
+                clearInterval(timeInt);
+                alert("Game Over!")
+            }
+        }, 1000)
+    }
+
     // one of these random box variable usages that will likely be changed.
     box.click(function(event){
             console.log(buttonChosen);
@@ -42,16 +67,6 @@ var intervalTime = 1500;
             }
     });
 
-
-    function moleInSingleButton(button) {
-            $(button).animate({
-                'margin-top': '-=50px'
-            }, (intervalTime / 2)).delay(1000).animate({
-                'margin-top': '+=50px'
-            });
-            console.log($(button));
-    }
-
     // this likely can be chopped into 2 function so that it is shorter.  start button
     // runs countDown function
     // then the interval uses buttonChosen(the random button/hole)
@@ -65,19 +80,8 @@ var intervalTime = 1500;
     });
 
 
-    // the countDown function.  starts at 30seconds then lowers the count by 1
-    // at an interval or aprox. 1 second.
-    function countDown(){
-        var timeInt = setInterval(function(){
-            timer--;
-            $("#timer").html(timer);
-            if(timer == 0){
-                clearInterval(moleInt);
-                clearInterval(timeInt);
-                alert("Game Over!")
-            }
-        }, 1000)
-    }
+
+
 
 
 
